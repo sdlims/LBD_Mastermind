@@ -47,11 +47,16 @@ module top_mod(
     FDRE # (.INIT(8'b00000000)) LFSR_Upper_FF [7:0] (.C(clk_i), .R({8{1'b0}}), .CE({8{go_w}}), .D(temp_upper_w), .Q(LFSR_Upper_w));
     FDRE # (.INIT(8'b00000000)) LFSR_Lower_FF [7:0] (.C(clk_i), .R({8{1'b0}}), .CE({8{go_w}}), .D(temp_lower_w), .Q(LFSR_Lower_w));
     
-    wire [3:0] attempts_w;
-    wire [1:0] correct_w;
-    MastermindSM MMSM_inst (.clk_i(clk_i), .user_i(sw), .lfsr_i({LFSR_Upper_w, LFSR_Lower_w}), .go_i(go_w), .led_o(led), .attempts_o(attempts_w), 
-    .correct_o(correct_w), .lockin_i(lockin_w), .flash_o(flash_w));
+    wire decrement_w;
+    wire [2:0] correct_w;
+
+    wire timeUp_w, startTime_w; //Coming from a Counter Timer
+    MastermindSM MMSM_inst (.clk_i(clk_i), .user_i(sw), .lfsr_i({LFSR_Upper_w, LFSR_Lower_w}), .go_i(go_w), .led_o(led), .decrement_o(decrment_w), 
+    .correct_o(correct_w), .lockin_i(lockin_w), .timeUp(timeUp_w), .done_i(no_attempts_w), .stareTime(startTime_w), .flash_o(flash_w));
     
+    wire [3:0] attempts_w;
+    wire no_attempts_w;
+    countUD5L attempts_counter(.clk_i(clk_i), .Dw(decrement_w), .Q(attempts_w), .DTC(no_attempts_w));
     
     wire [1:0] ring_w;
     RingCounter RC_inst(.clk_i(clk_i), .ring_o(ring_w));
