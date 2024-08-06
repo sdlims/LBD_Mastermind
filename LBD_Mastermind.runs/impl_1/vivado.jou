@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:04:56 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Thu Jul 25 11:00:51 2024
+# Process ID: 3308279
+# Current directory: /mada/users/sdli/LBD_Mastermind/LBD_Mastermind.runs/impl_1
+# Command line: vivado -log top_mod.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top_mod.tcl -notrace
+# Log file: /mada/users/sdli/LBD_Mastermind/LBD_Mastermind.runs/impl_1/top_mod.vdi
+# Journal file: /mada/users/sdli/LBD_Mastermind/LBD_Mastermind.runs/impl_1/vivado.jou
+# Running On: eq2, OS: Linux, CPU Frequency: 3000.000 MHz, CPU Physical cores: 24, Host memory: 134794 MB
+#-----------------------------------------------------------
+source top_mod.tcl -notrace
